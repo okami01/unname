@@ -5,12 +5,14 @@ import java.util.Scanner;
 
 public class Main {
 
+    private static Integer count = 0;
+
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         System.out.println("输入目标文件夹：");
         String destDir = scan.next();
         File destFile = new File(destDir);
-        if (!destFile.isDirectory()){
+        if (!destFile.isDirectory()) {
             System.err.println("没有找到文件夹：" + destDir);
             System.exit(0);
         }
@@ -22,7 +24,7 @@ public class Main {
 
         long endTime = System.currentTimeMillis();
         long time = endTime - starTime;
-        System.out.println("耗时: " + time);
+        System.out.println("共处理" + count + "个文件或文件夹，耗时: " + time + " 毫秒");
     }
 
     private static void listDir(String destDir, String destName) {
@@ -36,11 +38,11 @@ public class Main {
             for (File file : fileList) {
                 String name = file.getName();
                 if (name.contains(destName)) {
-                    String newName = name.replace(destName, "day");
+                    count++;
+                    String newName = name.replace(destName, "");
                     file.renameTo(new File(file.getParent(), newName));
                 }
                 if (file.isDirectory()) {
-                    System.out.println(file.getName());
                     listDir(file.getPath(), destName);
                 }
             }

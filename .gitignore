@@ -6,7 +6,6 @@ target/
 *.tar
 *.tar.gz
 *.class
-.flattened-pom.xml
 
 # eclipse ignore
 .settings/

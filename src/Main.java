@@ -16,7 +16,7 @@ public class Main {
             System.err.println("没有找到文件夹：" + destDir);
             System.exit(0);
         }
-        System.out.print("输入需要去除的文件名：");
+        System.out.println("输入需要去除的文件名：");
         String destName = scan.next();
         long starTime = System.currentTimeMillis();
 
